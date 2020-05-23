@@ -9,6 +9,7 @@ I did not use some frontend stuff for displaying stations, only json responses.
 To create API I:
 
     - used Docker and docker-compose
+    - used Laravel
     
     
 
