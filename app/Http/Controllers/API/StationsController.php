@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\City;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StationRequest;
 use App\Station;
@@ -10,9 +11,15 @@ use Illuminate\Http\Request;
 class StationsController extends Controller
 {
 
-    public function index()
+    public function index(City $city)
     {
-        return Station::get();
+        if ($city->exists) {
+            $stations = $city->stations()->get();
+        } else {
+            $stations = Station::get();
+        }
+
+        return $stations;
     }
 
 
