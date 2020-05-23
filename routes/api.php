@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('stations', 'API\StationsController@index');
 Route::get('stations/{city}', 'API\StationsController@index');
+Route::get('stations/{city}/{status}', 'API\StationsController@index');
 Route::get('stations/{station}', 'API\StationsController@show');
 Route::post('stations', 'API\StationsController@store');
 Route::put('stations/{station}', 'API\StationsController@update');
