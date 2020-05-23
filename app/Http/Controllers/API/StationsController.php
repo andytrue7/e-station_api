@@ -6,15 +6,18 @@ use App\City;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StationRequest;
 use App\Station;
-use Illuminate\Http\Request;
+
 
 class StationsController extends Controller
 {
 
-    public function index(City $city)
+    public function index(City $city, $stationStatus = null)
     {
         if ($city->exists) {
-            $stations = $city->stations()->get();
+            $stations = Station::getStationsByCity($city);
+            if($stationStatus == 1) {
+                $stations = Station::getStationsByStatus($city, $stationStatus);
+            }
         } else {
             $stations = Station::get();
         }
